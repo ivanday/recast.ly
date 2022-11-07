@@ -1,5 +1,6 @@
 var VideoList = () => (
   <div className="video-list">
+    <VideoListEntry />
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
