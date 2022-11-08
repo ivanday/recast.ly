@@ -6,19 +6,24 @@ import searchYoutube from '../lib/searchYoutube.js';
 
 var App = () => {
 
-  const {useState} = React;
-  const {useEffect} = React;
+  const {useState, useEffect} = React;
 
-  var [videoList, setVideoList] = useState(exampleVideoData);
+  var [videoList, setVideoList] = useState([]);
+  useEffect(() => { searchYoutube('', (data) => { setVideoList(data); } ); }, []);
+  console.log(videoList);
   var [currentVideo, setCurrentVideo] = useState(exampleVideoData[0]);
   var [searchString, setSearch] = useState('');
-  searchYoutube('macaroni', (data) => { setVideoList(data); } );
+
+
+
+  //console.log(videoList, currentVideo);
+
 
   return (
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><h5><em>search</em><Search currentSearch = {searchString} setSearch = {setSearch} setVideoList = {setVideoList} /></h5></div>
+          <div><h5><em>search</em><Search currentSearch = {searchString} setSearch = {setSearch} setVideoList = {setVideoList} searchYoutube = {searchYoutube} /></h5></div>
         </div>
       </nav>
       <div className="row">
