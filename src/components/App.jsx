@@ -1,19 +1,24 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
+import Search from './Search.js';
+import searchYoutube from '../lib/searchYoutube.js';
 
 var App = () => {
 
   const {useState} = React;
+  const {useEffect} = React;
 
   var [videoList, setVideoList] = useState(exampleVideoData);
   var [currentVideo, setCurrentVideo] = useState(exampleVideoData[0]);
+  var [searchString, setSearch] = useState('');
+  searchYoutube('macaroni', (data) => { setVideoList(data); } );
 
   return (
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><h5><em>search</em> view goes here</h5></div>
+          <div><h5><em>search</em><Search currentSearch = {searchString} setSearch = {setSearch} setVideoList = {setVideoList} /></h5></div>
         </div>
       </nav>
       <div className="row">
